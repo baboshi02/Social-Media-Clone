@@ -1,10 +1,10 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import React, { useState } from "react";
-import { Button } from "../components/regButton";
+import { Button } from "../../components/regButton";
 import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     console.log("email: ", email);
@@ -46,14 +46,9 @@ export const SignUp = () => {
                     className={InputStyle}
                     onChange={() => setPassword(e.target.value)}
                 />
-                <Button>
-                                    Sign up
-                </Button>
-               
+                <Button>Sign up</Button>
             </form>
-        <Button onClick={() => navigate("/")}>
-                    Have account
-                </Button>
+            <Button onClick={() => navigate("/")}>Have account</Button>
         </div>
     );
 };
