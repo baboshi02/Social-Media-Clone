@@ -44,7 +44,7 @@ export const SignUp = () => {
                     placeholder="Password"
                     name="pswrd"
                     className={InputStyle}
-                    onChange={() => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <Button>Sign up</Button>
             </form>

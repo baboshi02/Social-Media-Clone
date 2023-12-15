@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState ,react} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { Button } from "../../components/regButton";
 import {useNavigate} from "react-router-dom"
-export const SignIn = () => {
+export const SignIn = (props) => {
+    const authUser=props.authUser;
+    const navigate=useNavigate()
+    if (authUser){
+        navigate("/")
+    }
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const navigate=useNavigate()
     console.log("email: ", email);
     console.log("password: ", password);
     const signin = (e) => {
@@ -15,8 +19,8 @@ export const SignIn = () => {
             (userCredential) =>
                 console
                     .log("user", userCredential)
-                    .catch((err) => console.log(err))
-        );
+                    
+        ).catch(err => console.log("error", err))
     };
     const InputStyle = "inline-block w-full border-1 text-black w-1/2";
     return (

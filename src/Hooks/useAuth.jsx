@@ -2,21 +2,23 @@ import { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut as SignOut } from "firebase/auth";
 import { auth } from "../firebase";
 export const useAuth = () => {
-    const [authUser, setAuthUser] = useState("");
+    const [authUser, setAuthUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        const listen = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setAuthUser(user);
-            } else {
-                setAuthUser(null);
-            }
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setAuthUser(user);
+            setLoading(false);
         });
-        return listen;
-    }, []);
+        return () => {
+            unsubscribe();
+        };
+    }, [authUser]);
+
     const signOut = () => {
         SignOut(auth)
             .then(() => setAuthUser(null))
             .catch((err) => console.error(err));
     };
-    return { authUser, signOut };
+    return { authUser, signOut ,loading,signOut};
 };
