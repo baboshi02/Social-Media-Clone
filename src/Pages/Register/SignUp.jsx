@@ -18,11 +18,11 @@ export const SignUp = () => {
                     .catch((err) => console.log(err))
         );
     };
-    const InputStyle = "inline-block w-full border-1 text-black w-1/2";
+    const InputStyle = "w-full border-1 text-black w-1/2";
     return (
         <div
             onSubmit={signUp}
-            className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 h-[50vh]"
+            className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 h-[50vh] relative"
         >
             <h1>Sign Up</h1>
             <form className="border-2 border-[#f1f1f1] p-1 h-1/2">
@@ -48,7 +48,9 @@ export const SignUp = () => {
                 />
                 <Button>Sign up</Button>
             </form>
-            <Button onClick={() => navigate("/")}>Have account</Button>
+            <div className="absolute bottom-0 left-1/2 translate-x-[-50%]  m-1">
+                <Button onClick={() => navigate("/")}>Have account</Button>
+            </div>
         </div>
     );
 };

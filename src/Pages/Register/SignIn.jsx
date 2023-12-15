@@ -1,4 +1,4 @@
-import React, { useState ,react} from "react";
+import React, { useState} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { Button } from "../../components/regButton";
@@ -26,7 +26,7 @@ export const SignIn = (props) => {
     return (
         <div
             onSubmit={signin}
-            className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 h-[50vh]"
+            className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 h-[50vh] relative"
         >
             <h1>Sign In</h1>
             <form className="border-2 border-[#f1f1f1] p-1 h-1/2">
@@ -55,9 +55,12 @@ export const SignIn = (props) => {
                     Sign in
                 </Button>
             </form>
-            <Button onClick={(e)=>navigate('/signup')}>
+            <div className="absolute bottom-0 left-1/2 translate-x-[-50%]  m-1">
+                
+            <Button  onClick={(e)=>navigate('/signup')}>
                 Create Account
             </Button>
+            </div>
         </div>
     );
 };
