@@ -3,6 +3,8 @@ import { auth } from "../../firebase";
 import React, { useState } from "react";
 import { Button } from "../../components/regButton";
 import { useNavigate } from "react-router-dom";
+import { FaReddit } from "react-icons/fa";
+
 export const SignUp = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState();
@@ -20,6 +22,11 @@ export const SignUp = () => {
     };
     const InputStyle = "w-full border-1 text-black w-1/2";
     return (
+        <>
+         <div className="text-4xl my-2 text-center text-red-700 flex justify-center w-full">
+                    <FaReddit size={45} />
+                    <h1>Reddit</h1>
+                </div>
         <div
             onSubmit={signUp}
             className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 h-[50vh] relative"
@@ -52,5 +59,6 @@ export const SignUp = () => {
                 <Button onClick={() => navigate("/")}>Have account</Button>
             </div>
         </div>
+        </>    
     );
 };

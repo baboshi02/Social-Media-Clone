@@ -1,5 +1,5 @@
 import React from "react";
-import { FaReddit } from "react-icons/fa";
+
 import { HomePage } from "./Pages/HomePage/HomePage";
 import { useAuth } from "./Hooks/useAuth";
 import {
@@ -17,10 +17,7 @@ export const App = () => {
     return (
         <Router>
             <div className="text-blue-300 text-center box-border">
-                <div className="text-4xl my-2 text-center text-red-700 flex justify-center w-full">
-                    <FaReddit size={45} />
-                    <h1>Reddit</h1>
-                </div>
+           
                 {loading ? (
                     <div> Loading...</div>
                 ) : (

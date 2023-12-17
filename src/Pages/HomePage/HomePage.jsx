@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
 import { signOut } from "../../utils/signOut";
 import { Button } from "../../components/regButton";
+import { NavBar } from "../../components/NavBar";
 export const HomePage = (props) => {
     const {authUser} = props;
-//   const { authUser, signOut } = useContext(AuthUserContext);
     return (
         <div >
+            <NavBar />
             <h1>Welcome {authUser.email}</h1>
-            <Button onClick={signOut}>Sign Out</Button>
         </div>
     );
 };
