@@ -15,7 +15,7 @@ export const NavBarButton = (props) => {
     return (
         <button
             {...props}
-            className="bg-blue-400 overflow-visible rounded text-black hover:bg-blue-500 active:bg-blue-950 p-1 border"
+            className="bg-blue-400  rounded text-black hover:bg-blue-500 active:bg-blue-950 p-1 border"
         >
             {props.children}
         </button>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState} from "react";
+import React, { useState} from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { Button } from "../../components/regButton";
 import {useNavigate} from "react-router-dom"
 import { FaReddit } from "react-icons/fa";
+
 export const SignIn = (props) => {
     const authUser=props.authUser;
     const navigate=useNavigate()
