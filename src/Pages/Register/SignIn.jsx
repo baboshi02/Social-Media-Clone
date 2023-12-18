@@ -13,14 +13,15 @@ export const SignIn = (props) => {
     }
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const signin = (e) => {
+    const signin = async(e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password).then(
-            (userCredential) =>
-                console
-                    .log("user", userCredential)
-                    
-        ).catch(err => console.log("error", err))
+        try{
+            const userCredentials = await(signInWithEmailAndPassword(auth,email, password));
+            console.log(userCredentials);
+        }catch(err){
+            alert(err)
+        }
+     
     };
     const InputStyle = "inline-block w-full border-1 text-black w-1/2";
     return (
