@@ -1,10 +1,10 @@
 import React from 'react'
 
 export const PostElement = (props) => {
- const post=props.post
+ const {text}=props.post
   return (
     <div>
-        {post.text}
+        {text} <br />
     </div>
   )
 }
