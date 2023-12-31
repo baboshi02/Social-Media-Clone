@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { serverTimestamp } from "firebase/firestore";
 import { Button } from "../../components/regButton";
-import { setDoc, addDoc } from "firebase/firestore";
+import {  addDoc } from "firebase/firestore";
 export const AddPostElement = (props) => {
     const [formValue, setFormValue] = useState("a");
     const { postsRef } = props;
@@ -19,6 +19,7 @@ export const AddPostElement = (props) => {
         } catch (err) {
             console.log("Error adding element: ",err);
         }
+        
     };
 
     return (
