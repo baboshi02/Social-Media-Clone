@@ -1,5 +1,6 @@
 import { Register } from "../../components/register";
+import React from "react";
 export const SignUp = (props) => {
-    authUser = props.authUser;
-    return <Register name="signUp" authUser={authUser} />;
+    const authUser = props.authUser;
+    return <Register Name="signUp" authUser={authUser} />;
 };
