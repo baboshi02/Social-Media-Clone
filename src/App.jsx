@@ -37,7 +37,7 @@ export const App = () => {
                             path="/signin"
                             element={<SignIn authUser={authUser} />}
                         />
-                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/signup" element={<SignUp authUser={authUser}/>} />
                     </Routes>
                 )}
             </div>

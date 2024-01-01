@@ -18,7 +18,7 @@ export const HomePage = (props) => {
             <NavBar />
             <h1>Welcome {authUser.email}</h1>
             <AddPostElement postsRef={postsRef} />
-            <div className="flex flex-col gap-1 items-center text-blue-600">
+            <div className="mt-5 flex flex-col gap-1 items-center text-blue-600">
                 {posts?.map((post) => (
                     <PostElement post={post} />
                 ))}

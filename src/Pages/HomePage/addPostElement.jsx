@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { auth } from "../../firebase";
 import { serverTimestamp } from "firebase/firestore";
 import { Button } from "../../components/regButton";
 import {  addDoc } from "firebase/firestore";
+
 export const AddPostElement = (props) => {
-    const [formValue, setFormValue] = useState("a");
+    const [formValue, setFormValue] = useState("");
+    const inputForm=useRef()
     const { postsRef } = props;
     const sendPost = async (e) => {
         e.preventDefault();
@@ -18,8 +20,10 @@ export const AddPostElement = (props) => {
             console.log("Document written with ID: ",postsRef.id)
         } catch (err) {
             console.log("Error adding element: ",err);
+        } finally{
+            inputForm.current.value="";
         }
-        
+
     };
 
     return (
@@ -29,6 +33,7 @@ export const AddPostElement = (props) => {
                     type="text"
                     name="text"
                     onChange={(e) => setFormValue(e.target.value)}
+                    ref={inputForm}
                 />
                 <Button>add post</Button>
             </form>
