@@ -2,7 +2,7 @@ import React, { useState,useRef } from "react";
 import { auth } from "../../firebase";
 import { serverTimestamp } from "firebase/firestore";
 import { Button } from "../../components/regButton";
-import {  addDoc } from "firebase/firestore";
+import { addDoc } from "firebase/firestore";
 
 export const AddPostElement = (props) => {
     const [formValue, setFormValue] = useState("");
