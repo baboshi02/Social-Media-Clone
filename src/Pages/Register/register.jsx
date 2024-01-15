@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Button } from "../components/regButton";
+import { Button } from "../../components/regButton";
 import { useNavigate } from "react-router-dom";
 import { FaReddit } from "react-icons/fa";
-import { auth, db } from "../firebase";
+import { auth, db } from "../../firebase";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { collection ,setDoc,addDoc,doc} from "firebase/firestore";
+import {  setDoc,doc} from "firebase/firestore";
 
 export const Register = (props) => {
     const { authUser, Name } = props;

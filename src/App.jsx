@@ -8,8 +8,7 @@ import {
     Route,
     Navigate,
 } from "react-router-dom";
-import { SignIn } from "./Pages/Register/SignIn";
-import { SignUp } from "./Pages/Register/SignUp";
+import { Register } from "./Pages/Register/register";
 
 export const App = () => {
     const { authUser, loading } = useAuth();
@@ -35,9 +34,9 @@ export const App = () => {
                         />
                         <Route
                             path="/signin"
-                            element={<SignIn authUser={authUser} />}
+                            element={<Register Name="signIn" authUser={authUser} />}
                         />
-                        <Route path="/signup" element={<SignUp authUser={authUser}/>} />
+                        <Route path="/signup" element={<Register Name="signUp" authUser={authUser}/>} />
                     </Routes>
                 )}
             </div>
