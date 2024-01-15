@@ -1,29 +1,33 @@
-import React, { useState,useRef } from "react";
-import { auth } from "../../firebase";
+import React, { useState, useRef } from "react";
+import { auth,db } from "../../firebase";
 import { serverTimestamp } from "firebase/firestore";
 import { Button } from "../../components/regButton";
-import { addDoc } from "firebase/firestore";
+import { addDoc,doc,getDoc } from "firebase/firestore";
 
 export const AddPostElement = (props) => {
     const [formValue, setFormValue] = useState("");
-    const inputForm=useRef()
+    const inputForm = useRef();
     const { postsRef } = props;
     const sendPost = async (e) => {
         e.preventDefault();
-        const { uid } = auth.currentUser;
+        
         try {
+            const { uid } = auth.currentUser;
+            const userNameRef = doc(db, "users", uid);
+            const userNameSnaphot=await getDoc(userNameRef)
+            const userName=await userNameSnaphot.data().username
             await addDoc(postsRef, {
                 text: formValue,
                 createdAt: serverTimestamp(),
                 uid,
+                userName,
             });
-            console.log("Document written with ID: ",postsRef.id)
+            console.log("Document written with ID: ", postsRef.id);
         } catch (err) {
-            console.log("Error adding element: ",err);
-        } finally{
-            inputForm.current.value="";
+            console.log("Error adding element: ", err);
+        } finally {
+            inputForm.current.value = "";
         }
-
     };
 
     return (
