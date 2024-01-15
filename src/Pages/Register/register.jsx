@@ -2,80 +2,30 @@ import React, { useState } from "react";
 import { Button } from "../../components/regButton";
 import { useNavigate } from "react-router-dom";
 import { FaReddit } from "react-icons/fa";
-import { auth, db } from "../../firebase";
-import {
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-} from "firebase/auth";
-import {  setDoc,doc} from "firebase/firestore";
+import { auth } from "../../firebase";
+import { signIn } from "../../utils/signIn";
+import { signUp } from "../../utils/signUp";
 
 export const Register = (props) => {
     const { authUser, Name } = props;
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [username, setUsername] = useState();
-    const Link = Name == "signIn" ? "signup" : "signin";
-    const signin = async (e) => {
-        e.preventDefault();
-        try {
-            const userCredentials = await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
- 
-        } catch (err) {
-            alert(err);
-        }
-    };
-    const signUp = async (e) => {
-        e.preventDefault();
-        try {
-            const userCredential = await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-        const uid=userCredential.user.uid
-        const userNameRef=doc(db, 'usernames',username)
-        const usersRef=doc(db, 'users',uid)
-        setDoc(usersRef,{
-            username
-        })
-        setDoc(userNameRef,{
-            uid
-
-        })    
-        
-            console.log("user", userCredential);
-        } catch (err) {
-            alert(err);
-        }
-    };
-    const Action = Name == "signIn" ? signin : signUp;
-    const InputStyle = "inline-block w-full border-1 text-black w-1/2";
     const navigate = useNavigate();
     if (authUser) {
         navigate("/");
     }
-    const usernameInput =
-        Name == "signUp" ? (
-            <div>
-                <label htmlFor="username">
-                    <b>username</b>
-                </label>
-
-                <input
-                    type="text"
-                    placeholder="usename"
-                    name="username"
-                    className={InputStyle}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </div>
-        ) : (
-            ""
-        );
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [username, setUsername] = useState();
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        signIn(auth, email, password);
+    };
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        signUp(auth, email, password, username);
+    };
+    const Link = Name == "signIn" ? "signup" : "signin";
+    const Action = Name == "signIn" ? handleSignIn : handleSignUp;
+    const InputStyle = "inline-block w-full border-1 text-black w-1/2";
     return (
         <>
             <div className="text-4xl my-2 text-center text-red-700 flex justify-center w-full">
@@ -105,7 +55,23 @@ export const Register = (props) => {
                         className={InputStyle}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    {usernameInput}
+                    {Name == "signUp" ? (
+                        <div>
+                            <label htmlFor="username">
+                                <b>username</b>
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="usename"
+                                name="username"
+                                className={InputStyle}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </div>
+                    ) : (
+                        ""
+                    )}
                     <Button>{Name}</Button>
                 </form>
                 <div className="absolute bottom-0 right-0   m-1">
