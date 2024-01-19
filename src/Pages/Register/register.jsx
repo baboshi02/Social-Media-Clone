@@ -21,11 +21,16 @@ export const Register = (props) => {
     };
     const handleSignUp = async (e) => {
         e.preventDefault();
+        if(username.length <3 ||username.length>7){
+            alert("Username must be between 3 and 8")
+            return
+        }
         signUp(auth, email, password, username);
     };
     const Link = Name == "signIn" ? "signup" : "signin";
     const Action = Name == "signIn" ? handleSignIn : handleSignUp;
     const InputStyle = "inline-block w-full border-1 text-black w-1/2";
+
     return (
         <>
             <div className="text-4xl my-2 text-center text-red-700 flex justify-center w-full">
