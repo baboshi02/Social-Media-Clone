@@ -22,8 +22,7 @@ export const App = () => {
                 ) : (
                     <Routes>
                         <Route
-                            exact
-                            path="/"
+                            path="/*"
                             element={
                                 authUser ? (
                                     <HomePage authUser={authUser} />

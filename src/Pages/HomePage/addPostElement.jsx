@@ -3,8 +3,10 @@ import { auth,db } from "../../firebase";
 import { serverTimestamp } from "firebase/firestore";
 import { Button } from "../../components/regButton";
 import { addDoc,doc,getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export const AddPostElement = (props) => {
+    const navigate=useNavigate()
     const [formValue, setFormValue] = useState("");
     const inputForm = useRef();
     const { postsRef } = props;
@@ -26,7 +28,7 @@ export const AddPostElement = (props) => {
         } catch (err) {
             console.log("Error adding element: ", err);
         } finally {
-            inputForm.current.value = "";
+            navigate('/')
         }
     };
 
