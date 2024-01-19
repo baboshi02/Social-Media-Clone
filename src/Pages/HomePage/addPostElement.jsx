@@ -1,23 +1,27 @@
 import React, { useState, useRef } from "react";
-import { auth,db } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { serverTimestamp } from "firebase/firestore";
 import { Button } from "../../components/regButton";
-import { addDoc,doc,getDoc } from "firebase/firestore";
+import { addDoc, doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 export const AddPostElement = (props) => {
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     const [formValue, setFormValue] = useState("");
     const inputForm = useRef();
     const { postsRef } = props;
     const sendPost = async (e) => {
         e.preventDefault();
-        
+        if (formValue.length> 100){
+
+            return 
+
+        }
         try {
             const { uid } = auth.currentUser;
             const userNameRef = doc(db, "users", uid);
-            const userNameSnaphot=await getDoc(userNameRef)
-            const userName=await userNameSnaphot.data().username
+            const userNameSnaphot = await getDoc(userNameRef);
+            const userName = await userNameSnaphot.data().username;
             await addDoc(postsRef, {
                 text: formValue,
                 createdAt: serverTimestamp(),
@@ -28,20 +32,28 @@ export const AddPostElement = (props) => {
         } catch (err) {
             console.log("Error adding element: ", err);
         } finally {
-            navigate('/')
+            navigate("/");
         }
     };
 
     return (
         <div>
             <form onSubmit={sendPost}>
-                <input
-                    type="text"
+                <textarea
+                    className="resize-none bg-slate-300 rounded-md p-1 border  border-gray-500"
+                    required
+                    autoFocus
                     name="text"
                     onChange={(e) => setFormValue(e.target.value)}
+                    cols="30"
+                    rows="10"
                     ref={inputForm}
+                    placeholder="Post..."
                 />
-                <Button>add post</Button>
+                <div>
+                    <Button>add post</Button>
+                    {formValue.length>100 && <h1 className="text-red-500">Post length is too long must be less than 100 characters</h1> }
+                </div>
             </form>
         </div>
     );

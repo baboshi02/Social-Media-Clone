@@ -5,13 +5,15 @@ export const PostElement = (props) => {
  const date=createdAt?.toDate().toLocaleDateString()
  const time=createdAt?.toDate().toLocaleTimeString()
   return (
-    <div className='bg-slate-400 h-96 w-1/2 relative'>
+    <div className='bg-slate-400 p-8 w-1/2 relative text-blue-900'>
+      <h1>
         {text} 
+      </h1>
         
-        <div className='absolute left-0 bottom-0'>
-          {date + '   ' +time}
+        <div className='absolute right-1 bottom-0'>
+          {date + '  '+time}
         </div>
-        <div className='absolute right-0 bottom-0'>
+        <div className='absolute left-1 top-0'>
          {userName}
         </div>
     </div>

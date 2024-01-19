@@ -44,6 +44,7 @@ export const Register = (props) => {
                         <b>Email</b>
                     </label>
                     <input
+                        required
                         type="text"
                         placeholder="Email"
                         name="email"
@@ -54,6 +55,7 @@ export const Register = (props) => {
                         <b>password</b>
                     </label>
                     <input
+                        required
                         type="password"
                         placeholder="Password"
                         name="pswrd"
@@ -67,6 +69,7 @@ export const Register = (props) => {
                             </label>
 
                             <input
+                                required
                                 type="text"
                                 placeholder="usename"
                                 name="username"
