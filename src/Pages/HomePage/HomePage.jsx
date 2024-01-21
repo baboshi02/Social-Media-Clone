@@ -3,7 +3,7 @@ import { NavBar } from "../../components/NavBar";
 import { collection, doc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import {
-    useCollectionData,
+    useCollection,
     useDocumentData,
 } from "react-firebase-hooks/firestore";
 import { PostElement } from "./PostElement";
@@ -16,8 +16,8 @@ export const HomePage = (props) => {
     const Posts = () => {
         return (
             <div className="mt-5 flex flex-col gap-1 items-center text-blue-600">
-                {posts?.map((post) => (
-                    <PostElement post={post} key={post.createdAt} />
+                {posts?.map(({docID,docData}) => (
+                    <PostElement post={docData} id={docID} key={docData?.createdAt} />
                 ))}
             </div>
         );
@@ -27,7 +27,11 @@ export const HomePage = (props) => {
     const { uid } = auth.currentUser;
     const userNameRef = doc(db, "users", uid);
     const [users] = useDocumentData(userNameRef);
-    const [posts, loading] = useCollectionData(postsRef, { idField: "id" });
+    const [snapShot, loading] = useCollection(postsRef, { idField: "id" });
+    let posts=[]
+    snapShot?.forEach(doc=>{
+        posts.push({docID: doc.id, docData:doc.data()})
+    })
     return (
         <div>
             <NavBar />
