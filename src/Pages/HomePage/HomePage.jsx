@@ -10,7 +10,7 @@ import { PostElement } from "./PostElement";
 import { AddPostElement } from "./addPostElement";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Button } from "../../components/regButton";
-
+import { EditPostElement } from "./editPostElement";
 export const HomePage = (props) => {
     const navigate = useNavigate();
     const Posts = () => {
@@ -46,6 +46,10 @@ export const HomePage = (props) => {
                 <Route
                     path="/addPost"
                     element={<AddPostElement postsRef={postsRef} />}
+                />
+                <Route
+                    path="/editPost/:id"
+                    element={<EditPostElement posts={posts} />}
                 />
             </Routes>
         </div>
