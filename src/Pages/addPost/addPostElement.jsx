@@ -4,7 +4,7 @@ import { Button } from "../../components/regButton";
 import { useNavigate } from "react-router-dom";
 import { submitAdd } from "../../utils/submitAdd";
 
-export const AddPostElement = (props) => {
+export const AddPostElement = () => {
     const navigate = useNavigate();
     const [formValue, setFormValue] = useState("");
     const [titleValue, setTitleValue] = useState("");

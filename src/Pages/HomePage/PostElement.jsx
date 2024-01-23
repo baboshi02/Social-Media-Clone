@@ -9,7 +9,6 @@ export const PostElement = (props) => {
     const currentUID = auth.currentUser.uid;
     const postID = props.id;
     const { text, createdAt, userName, titleValue, uid } = props.post;
-    console.log(titleValue);
     const date = createdAt?.toDate().toLocaleDateString();
     const time = createdAt?.toDate().toLocaleTimeString();
     return (

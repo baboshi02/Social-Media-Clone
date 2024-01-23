@@ -9,6 +9,7 @@ import {
     Navigate,
 } from "react-router-dom";
 import { Register } from "./Pages/Register/register";
+import { PostContextProvider } from "./context/PostsContext";
 
 export const App = () => {
     const { authUser, loading } = useAuth();
@@ -16,7 +17,6 @@ export const App = () => {
     return (
         <Router>
             <div className="text-blue-300 text-center box-border">
-           
                 {loading ? (
                     <div> Loading...</div>
                 ) : (
@@ -25,7 +25,9 @@ export const App = () => {
                             path="/*"
                             element={
                                 authUser ? (
-                                    <HomePage authUser={authUser} />
+                                    <PostContextProvider>
+                                        <HomePage />
+                                    </PostContextProvider>
                                 ) : (
                                     <Navigate to="/signin" />
                                 )
@@ -33,9 +35,16 @@ export const App = () => {
                         />
                         <Route
                             path="/signin"
-                            element={<Register Name="signIn" authUser={authUser} />}
+                            element={
+                                <Register Name="signIn" authUser={authUser} />
+                            }
                         />
-                        <Route path="/signup" element={<Register Name="signUp" authUser={authUser}/>} />
+                        <Route
+                            path="/signup"
+                            element={
+                                <Register Name="signUp" authUser={authUser} />
+                            }
+                        />
                     </Routes>
                 )}
             </div>
