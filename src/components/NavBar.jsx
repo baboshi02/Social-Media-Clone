@@ -1,9 +1,8 @@
 import React from "react";
 import { NavBarButton } from "./regButton";
-
+import { signOut } from "firebase/auth";
 import { FaReddit } from "react-icons/fa";
-import { signOut } from "../utils/signOut";
-
+import { auth } from "../firebase";
 export const NavBar = () => {
     return (
         <div className=" gap-2 bg-slate-500 flex justify-end pr-1 ">
@@ -14,7 +13,11 @@ export const NavBar = () => {
                 </div>
             </div>
 
-            <NavBarButton onClick={signOut}>Sign Out</NavBarButton>
+            <NavBarButton
+                onClick={()=>signOut(auth).catch((err) => console.error(err))}
+            >
+                Sign Out
+            </NavBarButton>
         </div>
     );
 };

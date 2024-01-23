@@ -11,7 +11,9 @@ import { AddPostElement } from "../addPost/addPostElement";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Button } from "../../components/regButton";
 import { EditPost } from "../editPost/EditPost";
-export const HomePage = () => {
+export const HomePage = ({authUser}) => {
+    console.log("authUser: ",authUser)
+    console.log("auth: ",auth)
     const navigate = useNavigate();
     const currentLocation = location.pathname;
     const postsRef = collection(db, "Posts");

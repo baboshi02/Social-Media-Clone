@@ -3,11 +3,11 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { auth, db } from "../../firebase";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { deleteDoc,doc } from "firebase/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 export const PostElement = (props) => {
     const navigate = useNavigate();
     const currentUID = auth.currentUser.uid;
-    const postID=props.id
+    const postID = props.id;
     const { text, createdAt, userName, titleValue, uid } = props.post;
     console.log(titleValue);
     const date = createdAt?.toDate().toLocaleDateString();
@@ -30,22 +30,47 @@ export const PostElement = (props) => {
                 <h1>{text}</h1>
             </div>
 
-            {currentUID == uid && (
-                <div className="flex justify-end gap-2   ">
-                    <div
-                        onClick={() => deleteDoc(doc(db, "Posts", postID))}
-                        className="hover:bg-red-500 hover:cursor-pointer"
-                    >
-                        <FaRegTrashAlt />
-                    </div>
-                    <div
-                        onClick={() => navigate(`/editPost/${postID}`)}
-                        className="hover:bg-red-500 hover:cursor-pointer"
-                    >
-                        <FaEdit />
-                    </div>
-                </div>
-            )}
+            <div className="flex justify-end gap-2   ">
+                {currentUID == uid ? (
+                    <>
+                        <button
+                            onClick={() => deleteDoc(doc(db, "Posts", postID))}
+                            className="hover:bg-red-500 hover:cursor-pointer"
+                        >
+                            <FaRegTrashAlt />
+                        </button>
+                        <button
+                            onClick={() => navigate(`/editPost/${postID}`)}
+                            className="hover:bg-red-500 hover:cursor-pointer"
+                        >
+                            <FaEdit />
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <button
+                            onClick={() =>
+                                alert(
+                                    "This action must be used by the post publisher"
+                                )
+                            }
+                            className="hover:bg-gray-500 hover:cursor-pointer"
+                        >
+                            <FaRegTrashAlt />
+                        </button>
+                        <button
+                            onClick={() =>
+                                alert(
+                                    "This action must be used by the post publisher"
+                                )
+                            }
+                            className="hover:bg-gray-500 hover:cursor-pointer"
+                        >
+                            <FaEdit />
+                        </button>
+                    </>
+                )}
+            </div>
         </div>
     );
 };
