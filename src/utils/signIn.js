@@ -1,5 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-export const signIn =  (auth,email,password) => {
+export const signIn =  (e,auth,email,password) => {
+    e.preventDefault()
     try {
         signInWithEmailAndPassword(
             auth,

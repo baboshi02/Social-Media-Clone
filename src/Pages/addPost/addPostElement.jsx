@@ -1,37 +1,21 @@
-import React, { useState  } from "react";
+import React, { useState, useRef } from "react";
+import { auth} from "../../firebase";
 import { Button } from "../../components/regButton";
-import {doc, updateDoc} from "firebase/firestore";
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { db } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import { submitAdd } from "../../utils/submitAdd";
 
-export const EditPostElement = ({posts}) => {
-    
-    const {id}=useParams()
+export const AddPostElement = (props) => {
     const navigate = useNavigate();
-    const handleFormSubmit=()=>{
-       const postRef=doc(db,"Posts",id)
-       updateDoc(postRef,{
-        titleValue,
-        text:formValue,
+    const [formValue, setFormValue] = useState("");
+    const [titleValue, setTitleValue] = useState("");
+    const inputForm = useRef();
+    const values={titleValue, formValue}
 
-       })
-       navigate('/')
-    }
-    const post=posts.find(post => post.docID===id)
-    console.log(post?.docData)
-    const [titleValue, setTitleValue] = useState(" ");
-    const [formValue, setFormValue] = useState(" ");
-    useEffect(()=>{
-        setTitleValue(post?.docData.titleValue);
-        setFormValue(post?.docData.text);
-    },[post])
     return (
         <div className=" my-2 text-black">
-            <form onSubmit={handleFormSubmit} action="POST">
+            <form onSubmit={(e)=>submitAdd(e,auth,values,navigate)}>
                 <div>
                     <input
-                        value={titleValue || ''}
                         required
                         type="text"
                         placeholder="Title"
@@ -41,7 +25,6 @@ export const EditPostElement = ({posts}) => {
                     />
                 </div>
                 <textarea
-                    value={formValue || ''}
                     className="resize-none bg-slate-300 rounded-md p-1 border  border-gray-500"
                     required
                     autoFocus
@@ -49,11 +32,12 @@ export const EditPostElement = ({posts}) => {
                     onChange={(e) => setFormValue(e.target.value)}
                     cols="30"
                     rows="10"
+                    ref={inputForm}
                     placeholder="Post..."
                 />
                 <div>
-                    <Button>Edit Post</Button>
-                    {formValue?.length > 100 && (
+                    <Button>add post</Button>
+                    {formValue.length > 100 && (
                         <h1 className="text-red-500">
                             Post length is too long must be less than 100
                             characters

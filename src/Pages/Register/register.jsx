@@ -15,20 +15,8 @@ export const Register = (props) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [username, setUsername] = useState();
-    const handleSignIn = (e) => {
-        e.preventDefault();
-        signIn(auth, email, password);
-    };
-    const handleSignUp = async (e) => {
-        e.preventDefault();
-        if(username.length <3 ||username.length>7){
-            alert("Username must be between 3 and 8")
-            return
-        }
-        signUp(auth, email, password, username);
-    };
     const Link = Name == "signIn" ? "signup" : "signin";
-    const Action = Name == "signIn" ? handleSignIn : handleSignUp;
+    const Action = Name == "signIn" ? (e)=> signIn(e,auth, email, password) : (e)=> signUp(e,auth, email, password, username);
     const InputStyle = "inline-block w-full border-1 text-black w-1/2";
 
     return (
@@ -39,7 +27,7 @@ export const Register = (props) => {
             </div>
             <div className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 h-[50vh] relative">
                 <h1>{Name} </h1>
-                <form className="  p-1 h-1/2" onSubmit={Action}>
+                <form className="  p-1 h-1/2" onSubmit={(e)=>Action(e)}>
                     <label htmlFor="email">
                         <b>Email</b>
                     </label>
