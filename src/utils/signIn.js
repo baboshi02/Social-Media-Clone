@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-export const signIn =  (e,auth,email,password) => {
-    e.preventDefault()
+export const signIn =  async(auth,email,password) => {
+
     try {
-        signInWithEmailAndPassword(
+        await signInWithEmailAndPassword(
             auth,
             email,
             password

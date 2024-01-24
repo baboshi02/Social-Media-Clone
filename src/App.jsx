@@ -13,7 +13,7 @@ import { PostContextProvider } from "./context/PostsContext";
 
 export const App = () => {
     const { authUser, loading } = useAuth();
-
+    console.log(authUser)
     return (
         <Router>
             <div className="text-blue-300 text-center box-border">

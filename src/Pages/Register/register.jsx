@@ -16,7 +16,16 @@ export const Register = (props) => {
     const [password, setPassword] = useState();
     const [username, setUsername] = useState();
     const Link = Name == "signIn" ? "signup" : "signin";
-    const Action = Name == "signIn" ? (e)=> signIn(e,auth, email, password) : (e)=> signUp(e,auth, email, password, username);
+    const Action =
+        Name == "signIn"
+            ? (e) => {
+                  e.preventDefault();
+                  signIn(auth, email, password);
+              }
+            : (e) => {
+                  e.preventDefault;
+                  signUp(auth, email, password, username);
+              };
     const InputStyle = "inline-block w-full border-1 text-black w-1/2";
 
     return (
@@ -27,7 +36,7 @@ export const Register = (props) => {
             </div>
             <div className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 h-[50vh] relative">
                 <h1>{Name} </h1>
-                <form className="  p-1 h-1/2" onSubmit={(e)=>Action(e)}>
+                <form className="  p-1 h-1/2" onSubmit={(e) => Action(e)}>
                     <label htmlFor="email">
                         <b>Email</b>
                     </label>

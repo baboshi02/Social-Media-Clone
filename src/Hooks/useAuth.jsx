@@ -4,7 +4,6 @@ import { auth } from "../firebase";
 export const useAuth = () => {
     const [authUser, setAuthUser] = useState(null);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setAuthUser(user);

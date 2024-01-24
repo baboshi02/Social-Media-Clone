@@ -9,7 +9,8 @@ export const PostContext = createContext();
 const getPosts = () => {
     let posts = [];
     const postsRef = collection(db, "Posts");
-    const [snapShot, loading] = useCollection(postsRef, { idField: "id" });
+    const [snapShot, loading,error] = useCollection(postsRef, { idField: "id" });
+    console.log("error: " + error)
     snapShot?.forEach((doc) => {
         posts.push({ docID: doc.id, docData: doc.data() });
     });
@@ -19,7 +20,8 @@ const getPosts = () => {
 const getUsers = () => {
     const { uid } = auth.currentUser;
     const userNameRef = doc(db, "users", uid);
-    const [users] = useDocumentData(userNameRef);
+    const [users, ,error] = useDocumentData(userNameRef);
+    console.log("error: ", error)
     return users;
 };
 

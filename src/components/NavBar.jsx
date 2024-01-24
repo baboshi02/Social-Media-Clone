@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavBarButton } from "./regButton";
 import { signOut } from "firebase/auth";
 import { FaReddit } from "react-icons/fa";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { PostContext } from "../context/PostsContext";
 export const NavBar = () => {
     const navigate=useNavigate()
+    const {users}=useContext(PostContext)
     const currentLocation = location.pathname;
     return (
         <div className=" gap-2 bg-slate-500 flex justify-end pr-1 ">
@@ -16,6 +18,10 @@ export const NavBar = () => {
                     <h1>Reddit</h1>
                 </div>
             </div>
+            {users&&
+            <div className="my-auto">
+                Signed in as {users.username}
+            </div>}
             {currentLocation == "/" ? (
                 <NavBarButton onClick={() => navigate("/addPost")}>Add Post </NavBarButton>
             ) : (

@@ -1,8 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
-export const signUp = async (e,auth, email, password, username) => {
-    e.preventDefault();
+export const signUp = async (auth, email, password, username) => {
     console.log(username)
     if (username.length < 3 || username.length > 7) {
         alert("Username must be between 3 and 8");
