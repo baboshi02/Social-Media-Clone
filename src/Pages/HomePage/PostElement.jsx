@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { auth, db } from "../../firebase";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc } from "firebase/firestore";
+import { FaComment } from "react-icons/fa6";
+import { CommentBox  } from "../../components/Comment/CommentBox";
 export const PostElement = (props) => {
     const navigate = useNavigate();
+    const [activeComments, setActiveComments] = useState(false);
     const currentUID = auth.currentUser.uid;
     const postID = props.id;
     const { text, createdAt, userName, titleValue, uid } = props.post;
@@ -29,6 +32,7 @@ export const PostElement = (props) => {
                 <h1>{text}</h1>
             </div>
 
+            {activeComments && <CommentBox postID={postID} />}
             <div className="flex justify-end gap-2   ">
                 {currentUID == uid ? (
                     <>
@@ -43,6 +47,12 @@ export const PostElement = (props) => {
                             className="hover:bg-red-500 hover:cursor-pointer"
                         >
                             <FaEdit />
+                        </button>
+                        <button
+                            onClick={() => setActiveComments(!activeComments)}
+                            className="hover:cursor-pointer"
+                        >
+                            <FaComment />
                         </button>
                     </>
                 ) : (
@@ -67,6 +77,13 @@ export const PostElement = (props) => {
                         >
                             <FaEdit />
                         </button>
+                        <button
+                            onClick={() => setActiveComments(!activeComments)}
+                            className="hover:cursor-pointer"
+                        >
+                            <FaComment />
+                        </button>
+                        <div></div>
                     </>
                 )}
             </div>
