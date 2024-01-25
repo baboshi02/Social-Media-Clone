@@ -4,7 +4,7 @@ import { serverTimestamp } from "firebase/firestore";
 export const submitAdd = async (e,auth,values,navigate) => {
     const {titleValue,formValue} =values
     e.preventDefault();
-    if (formValue.length > 100) {
+    if (formValue.length > 200) {
         return;
     }
     try {

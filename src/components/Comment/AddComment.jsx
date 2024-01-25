@@ -4,19 +4,21 @@ import { submitComment } from "../../utils/submitComment";
 
 import { useContext } from "react";
 import { PostContext } from "../../context/PostsContext";
-export const AddComment = ({postID}) => {
+export const AddComment = ({postID,setIsAddingComment}) => {
     const { users } = useContext(PostContext);
     const [commentValue, setCommentValue] = useState("");
     return (
-        <div>
+        <div clas>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
                     submitComment(postID, commentValue,users);
+                    setIsAddingComment((prev)=>!prev);
+
                 }}
             >
                 <textarea
-                    className="resize-none"
+                    className="resize-none overflow-auto w-full"
                     name="comment"
                     cols="30"
                     rows="2"
