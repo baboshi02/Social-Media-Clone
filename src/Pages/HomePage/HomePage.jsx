@@ -10,7 +10,7 @@ export const HomePage = () => {
     const { posts} = useContext(PostContext);
 
     return (
-        <div>
+        <div className="mb-2">
             <NavBar />
             <Routes>
                 <Route index element={<Posts posts={posts} />} />

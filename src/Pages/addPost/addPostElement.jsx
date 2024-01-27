@@ -13,14 +13,23 @@ export const AddPostElement = () => {
 
     return (
         <div className=" my-2 text-black">
-            <form onSubmit={(e) => submitAdd(e, auth, values, navigate)}>
+            <form
+                onSubmit={(e) => {
+                    if(formValue.length>200) {
+                        alert("post must be less than 200 characters")
+                        return
+                    }
+                    e.preventDefault();
+                    submitAdd(auth, values, navigate);
+                }}
+            >
                 <div>
                     <input
                         required
                         type="text"
                         placeholder="Title"
                         name="title"
-                        className="bg-slate-300 rounded mb-2"
+                        className="bg-slate-300 rounded mb-2 "
                         autoFocus
                         onChange={(e) => setTitleValue(e.target.value)}
                     />

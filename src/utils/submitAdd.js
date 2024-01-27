@@ -1,12 +1,8 @@
 import {doc,addDoc,getDoc,collection} from "firebase/firestore"
 import {db} from "../firebase"
 import { serverTimestamp } from "firebase/firestore";
-export const submitAdd = async (e,auth,values,navigate) => {
+export const submitAdd = async (auth,values,navigate) => {
     const {titleValue,formValue} =values
-    e.preventDefault();
-    if (formValue.length > 200) {
-        return;
-    }
     try {
         const postsRef = collection(db, "Posts");
         const { uid } = auth.currentUser;

@@ -23,7 +23,7 @@ export const Register = (props) => {
                   signIn(auth, email, password);
               }
             : (e) => {
-                  e.preventDefault;
+                  e.preventDefault();
                   signUp(auth, email, password, username);
               };
     const InputStyle = "inline-block w-full border-1 text-black w-1/2";
