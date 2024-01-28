@@ -37,6 +37,7 @@ export const PostElement = (props) => {
                     {currentUID == uid ? (
                         <>
                             <button
+                                title="Delete post"
                                 onClick={() =>
                                     deleteDoc(doc(db, "Posts", postID))
                                 }
@@ -45,12 +46,14 @@ export const PostElement = (props) => {
                                 <FaRegTrashAlt />
                             </button>
                             <button
+                            title="Edit post"
                                 onClick={() => navigate(`/editPost/${postID}`)}
                                 className="hover:bg-red-500 hover:cursor-pointer"
                             >
                                 <FaEdit />
                             </button>
                             <button
+                                title="Comment"
                                 onClick={() =>
                                     setActiveComments(!activeComments)
                                 }
@@ -62,6 +65,7 @@ export const PostElement = (props) => {
                     ) : (
                         <>
                             <button
+                            title="Delete post"
                                 onClick={() =>
                                     alert(
                                         "This action must be used by the post publisher"
@@ -72,6 +76,7 @@ export const PostElement = (props) => {
                                 <FaRegTrashAlt />
                             </button>
                             <button
+                            title="Edit post"
                                 onClick={() =>
                                     alert(
                                         "This action must be used by the post publisher"
@@ -82,6 +87,7 @@ export const PostElement = (props) => {
                                 <FaEdit />
                             </button>
                             <button
+                            title="Comment"
                                 onClick={() =>
                                     setActiveComments(!activeComments)
                                 }

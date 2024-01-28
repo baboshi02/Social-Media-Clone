@@ -10,7 +10,7 @@ export const ShowComments = ({ postID }) => {
     console.log("Comments length = ",comments?.length);
     return (
         <div className=" overflow-scroll overflow-x-scroll">
-            {comments ? (
+            {comments?.length>0 ? (
                 comments.map(({ publisher, postId, value, createdAt }) => {
                     const date = createdAt?.toDate().toLocaleDateString();
                     const time = createdAt?.toDate().toLocaleTimeString();
