@@ -14,8 +14,8 @@ export const NavBar = () => {
             {" "}
             <div className=" mr-auto">
                 <div className="text-4xl my-2 text-center text-red-700 flex justify-center w-full">
-                    <PiAndroidLogoFill size={45} />
-                    <h1>Reddit</h1>
+                    <PiAndroidLogoFill size={45} className="text-green-400"/>
+
                 </div>
             </div>
             {users&&

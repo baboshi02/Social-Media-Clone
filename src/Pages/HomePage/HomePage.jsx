@@ -5,7 +5,6 @@ import { AddPostElement } from "../addPost/addPostElement";
 import { Route, Routes } from "react-router-dom";
 import { EditPost } from "../editPost/EditPost";
 import { PostContext } from "../../context/PostsContext";
-import { IconContext } from "react-icons";
 export const HomePage = () => {
     const { posts } = useContext(PostContext);
 

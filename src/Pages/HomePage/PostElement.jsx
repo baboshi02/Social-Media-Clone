@@ -41,25 +41,23 @@ export const PostElement = (props) => {
                                 onClick={() =>
                                     deleteDoc(doc(db, "Posts", postID))
                                 }
-                                className="hover:bg-red-500 hover:cursor-pointer"
                             >
-                                <FaRegTrashAlt />
+                                <FaRegTrashAlt className="hover:text-red-500 hover:cursor-pointer" />
                             </button>
                             <button
                             title="Edit post"
                                 onClick={() => navigate(`/editPost/${postID}`)}
-                                className="hover:bg-red-500 hover:cursor-pointer"
+                                
                             >
-                                <FaEdit />
+                                <FaEdit className="hover:text-red-500 hover:cursor-pointer"/>
                             </button>
                             <button
                                 title="Comment"
                                 onClick={() =>
                                     setActiveComments(!activeComments)
                                 }
-                                className="hover:cursor-pointer"
                             >
-                                <FaComment />
+                                <FaComment className="hover:text-red-500 hover:cursor-pointer"/>
                             </button>
                         </>
                     ) : (
@@ -71,9 +69,9 @@ export const PostElement = (props) => {
                                         "This action must be used by the post publisher"
                                     )
                                 }
-                                className="hover:bg-gray-500 hover:cursor-pointer"
+                                
                             >
-                                <FaRegTrashAlt />
+                                <FaRegTrashAlt className="hover:text-gray-500 hover:cursor-pointer"/>
                             </button>
                             <button
                             title="Edit post"
@@ -82,18 +80,16 @@ export const PostElement = (props) => {
                                         "This action must be used by the post publisher"
                                     )
                                 }
-                                className="hover:bg-gray-500 hover:cursor-pointer"
                             >
-                                <FaEdit />
+                                <FaEdit className="hover:text-gray-500 hover:cursor-pointer"/>
                             </button>
                             <button
                             title="Comment"
                                 onClick={() =>
                                     setActiveComments(!activeComments)
                                 }
-                                className="hover:cursor-pointer"
                             >
-                                <FaComment />
+                                <FaComment className="hover:text-red-500 hover:cursor-pointer"/>
                             </button>
                             <div></div>
                         </>

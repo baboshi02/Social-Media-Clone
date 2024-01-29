@@ -37,7 +37,7 @@ export const Register = (props) => {
                 <PiAndroidLogoFill size={45} />
                 <h1>Reddit</h1>
             </div>
-            <div className="mx-auto p-4 bg-gray-500 rounded-md w-1/2 ">
+            <div className="mx-auto p-4 bg-gray-500 rounded-md w-3/4 ">
                 <h1 className="text-3xl font-sans">{pageName} </h1>
                 <form
                     className="  p-1 h-1/2 border border-white rounded-md"

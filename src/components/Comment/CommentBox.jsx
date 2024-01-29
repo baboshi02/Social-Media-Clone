@@ -7,7 +7,7 @@ export const CommentBox = ({ postID }) => {
     console.log(postID);
     const [isAddingComment, setIsAddingComment] = useState(false);
     return (
-        <div className="border border-gray-300 p-2 my-2">
+        <div className="border border-gray-700 bg-slate-600 text-gray-300 p-2 my-2 rounded-md">
             <Button onClick={() => setIsAddingComment(!isAddingComment)}>
                 {isAddingComment ? "Show Commensts" : "ADD Comments"}
             </Button>
