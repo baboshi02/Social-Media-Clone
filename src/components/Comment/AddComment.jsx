@@ -22,7 +22,7 @@ export const AddComment = ({postID,setIsAddingComment}) => {
                 }}
             >
                 <textarea
-                    className="resize-none overflow-auto w-full bg-slate-300 rounded  border-gray-500"
+                    className="resize-none overflow-auto w-full bg-slate-300 rounded  border-gray-500 text-black"
                     placeholder="Comment..."
                     name="comment"
                     cols="30"
@@ -32,7 +32,7 @@ export const AddComment = ({postID,setIsAddingComment}) => {
                     required
                 />
                 <div>
-                    <Button>comment</Button>
+                    <Button>Submit</Button>
                 </div>
             </form>
         </div>

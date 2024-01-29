@@ -9,7 +9,7 @@ export const CommentBox = ({ postID }) => {
     return (
         <div className="border border-gray-700 bg-slate-600 text-gray-300 p-2 my-2 rounded-md">
             <Button onClick={() => setIsAddingComment(!isAddingComment)}>
-                {isAddingComment ? "Show Commensts" : "ADD Comments"}
+                {isAddingComment ? "Show " : "Comment "}
             </Button>
             {isAddingComment ? <AddComment postID={postID} setIsAddingComment={setIsAddingComment} /> : <ShowComments postID={postID} />}
         </div>

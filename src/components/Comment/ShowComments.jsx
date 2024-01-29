@@ -16,8 +16,8 @@ export const ShowComments = ({ postID }) => {
                 <h1>Loading...</h1>
             ) : comments?.length > 0 ? (
                 comments.map(({ publisher, value, createdAt }) => {
-                    const date = createdAt?.toDate().toLocaleDateString();
-                    const time = createdAt?.toDate().toLocaleTimeString();
+                    const date = createdAt? createdAt.toDate().toLocaleDateString():"";
+                    const time = createdAt? createdAt.toDate().toLocaleTimeString():"";
 
                     return (
                         <div
@@ -26,7 +26,7 @@ export const ShowComments = ({ postID }) => {
                         >
                             <div className="mb-2">
                                 <small className="inline text-gray-300 ">
-                                    u/{publisher}
+                                    u/{publisher||""}
                                 </small>
                                 <small className="inline text-slate-100">
                                     {"     " + date + "  " + time}
