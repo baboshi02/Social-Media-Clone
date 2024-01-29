@@ -10,7 +10,6 @@ export const HomePage = () => {
 
     return (
         <div className="mb-2">
-            {/* <IconContext.Provider> */}
                 <NavBar />
                 <Routes>
                     <Route index element={<Posts posts={posts} />} />
@@ -20,7 +19,6 @@ export const HomePage = () => {
                         element={<EditPost posts={posts} />}
                     />
                 </Routes>
-            {/* </IconContext.Provider> */}
         </div>
     );
 };

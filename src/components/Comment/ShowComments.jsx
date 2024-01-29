@@ -21,7 +21,7 @@ export const ShowComments = ({ postID }) => {
 
                     return (
                         <div
-                            className="border border-gray-500 p-1 mb-1 rounded h-20"
+                            className="border border-gray-500 p-1 mb-1 rounded "
                             key={date + time}
                         >
                             <div className="mb-2">
