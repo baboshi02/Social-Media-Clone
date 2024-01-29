@@ -10,7 +10,7 @@ export const NavBar = () => {
     const { users } = useContext(PostContext);
     const currentLocation = location.pathname;
     return (
-        <div className=" gap-2 bg-slate-500 flex justify-end pr-1 ">
+        <div className=" gap-2  bg-[#282C35] flex justify-end pr-1 ">
             {" "}
             <div className=" mr-auto">
                 <div className="text-4xl my-2 text-center text-green-400 flex justify-center w-full">
