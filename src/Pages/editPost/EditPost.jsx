@@ -26,7 +26,7 @@ export const EditPost = ({ posts }) => {
                         return;
                     }
                     e.preventDefault();
-                    debouncedSubmitEdit()
+                    debouncedSubmitEdit();
                 }}
                 action="POST"
             >
@@ -37,7 +37,7 @@ export const EditPost = ({ posts }) => {
                         type="text"
                         placeholder="Title"
                         name="title"
-                        className="bg-slate-300 rounded mb-2"
+                        className="bg-slate-300 rounded mb-2 border border-primaryColor"
                         onChange={(e) => setTitleValue(e.target.value)}
                     />
                 </div>
