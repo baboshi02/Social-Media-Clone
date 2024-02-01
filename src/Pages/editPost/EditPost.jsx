@@ -4,10 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { useEditPost } from "../../Hooks/useEditPost";
 import { submitEdit } from "../../utils/submitEdit";
-
+import { debounce } from "../../utils/debounce";
 export const EditPost = ({ posts }) => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const debouncedSubmitEdit = debounce(() => {
+        submitEdit(db, id, titleValue, formValue, navigate);
+    }, 600);
     const { titleValue, formValue, setTitleValue, setFormValue } = useEditPost(
         posts,
         id
@@ -16,12 +19,14 @@ export const EditPost = ({ posts }) => {
         <div className=" my-2 text-black">
             <form
                 onSubmit={(e) => {
-                    if(formValue>200||titleValue>50){
-                        alert("Title length must be under 50 characters an Post must be under 200 characters")
-                        return
+                    if (formValue > 200 || titleValue > 50) {
+                        alert(
+                            "Title length must be under 50 characters an Post must be under 200 characters"
+                        );
+                        return;
                     }
                     e.preventDefault();
-                    submitEdit(db, id, titleValue, formValue, navigate);
+                    debouncedSubmitEdit()
                 }}
                 action="POST"
             >

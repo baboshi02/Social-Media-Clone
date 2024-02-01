@@ -5,6 +5,7 @@ import { PiAndroidLogoFill } from "react-icons/pi";
 import { auth, db } from "../../firebase";
 import { signIn } from "../../utils/signIn";
 import { signUp } from "../../utils/signUp";
+import { debounce } from "../../utils/debounce";
 
 export const Register = (props) => {
     const { authUser, Name } = props;
@@ -21,26 +22,31 @@ export const Register = (props) => {
 
     const Action =
         Name == "signIn"
-            ? (e) => {
-                  e.preventDefault();
+            ? () => {
                   signIn(auth, email, password);
               }
-            : (e) => {
-                  e.preventDefault();
+            : () => {
                   signUp(auth, email, password, username);
               };
+    const debouncedAction = debounce(() => {
+        console.log("Button clicked")
+        Action();
+    },600);
     const InputStyle = "inline-block w-full  text-black mb-1 ";
 
     return (
         <>
-            <div className="text-4xl my-2 text-center text-green-400 flex justify-center w-full ">
+            <div className="text-4xl my-2 text-center text-green-400 flex justify-center w-full   ">
                 <PiAndroidLogoFill size={45} />
             </div>
             <div className="mx-auto  p-4 bg-[#282C35] rounded-md w-3/4 ">
                 <h1 className="text-3xl font-sans">{pageName} </h1>
                 <form
                     className="  p-1    rounded-md my-2"
-                    onSubmit={(e) => Action(e)}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        debouncedAction();
+                    }}
                 >
                     <label htmlFor="email">
                         <b>Email</b>
@@ -85,7 +91,7 @@ export const Register = (props) => {
                     ) : (
                         ""
                     )}
-                    <Button >{pageName}</Button>
+                    <Button>{pageName}</Button>
                 </form>
                 <div className="flex justify-end   ">
                     <Button onClick={(e) => navigate(`/${Link}`)}>

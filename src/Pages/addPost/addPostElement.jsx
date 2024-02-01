@@ -3,14 +3,14 @@ import { auth } from "../../firebase";
 import { Button } from "../../components/regButton";
 import { useNavigate } from "react-router-dom";
 import { submitAdd } from "../../utils/submitAdd";
-
+import { debounce } from "../../utils/debounce";
 export const AddPostElement = () => {
     const navigate = useNavigate();
     const [formValue, setFormValue] = useState("");
     const [titleValue, setTitleValue] = useState("");
     const inputForm = useRef();
     const values = { titleValue, formValue };
-
+    const debouncedSubmitAdd=debounce(()=>{console.log('clicked');submitAdd(auth,values,navigate)},600)
     return (
         <div className=" my-2 text-black">
             <form
@@ -20,7 +20,7 @@ export const AddPostElement = () => {
                         return
                     }
                     e.preventDefault();
-                    submitAdd(auth, values, navigate);
+                    debouncedSubmitAdd(auth, values, navigate);
                 }}
             >
                 <div>
