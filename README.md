@@ -14,3 +14,7 @@ cd Ecommerce-Website
 npm install
 
 npm run dev
+
+## Usage
+You need to go to the [firebase](https://firebase.google.com/) website and start a new project. When it is done you should paste your configurations to the firebase.js file
+
