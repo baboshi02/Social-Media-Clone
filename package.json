@@ -2,7 +2,7 @@
   "name": "reddit-clone",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://baboshi02.github.io/Social-Media-Clone",
+  "homepage": "https://baboshi02.github.io/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
