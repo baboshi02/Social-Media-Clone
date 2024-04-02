@@ -7,7 +7,7 @@ Showcasing a basic social media app that allows users basic functionality like r
 
 ## Installation
 
-git clone https://github.com/baboshi02/Ecommerce-Website.git
+git clone https://github.com/baboshi02/Social-Media-Clone.git
 
 cd Ecommerce-Website
 
