@@ -18,15 +18,16 @@ export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [Error, setError] = useState({ isError: false, message: "" });
   const Link = Name == "signIn" ? "signup" : "signin";
 
   const Action =
     Name == "signIn"
       ? () => {
-          signIn(auth, email, password);
+          signIn(auth, email, password, setError);
         }
       : () => {
-          signUp(auth, email, password, username);
+          signUp(auth, email, password, username, setError);
         };
   const debouncedAction = debounce(() => {
     Action();
@@ -91,6 +92,9 @@ export const Register = (props) => {
             ""
           )}
           <Button>{pageName}</Button>
+          {Error.isError && (
+            <div className="text-red-500"> {Error.message}</div>
+          )}
         </form>
         <div className="flex justify-end   ">
           <Button onClick={(e) => navigate(`/${Link}`)}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { HomePage } from "./Pages/HomePage/HomePage";
 import { useAuth } from "./Hooks/useAuth";
@@ -10,8 +10,13 @@ import {
 } from "react-router-dom";
 import { Register } from "./Pages/Register/register";
 import { PostContextProvider } from "./context/PostsContext";
+import { useDarkMode } from "./Hooks/useDarkMode";
 
 export const App = () => {
+  const [darkMode, setDatkmode] = useDarkMode();
+  useEffect(() => {
+    setDatkmode(true);
+  }, []);
   const { authUser, loading } = useAuth();
   return (
     <Router>
