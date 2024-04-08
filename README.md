@@ -1,8 +1,20 @@
-# React + Vite
+# Basic Social Media App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Showcasing a basic social media app that allows users basic functionality like registering, posting and commenting.Project done using react JS with tailwind in the front end and Firebase as backend.
 
-Currently, two official plugins are available:
+## Prerequisites
+- Node js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+
+git clone https://github.com/baboshi02/Social-Media-Clone.git
+
+cd Ecommerce-Website
+
+npm install
+
+npm run dev
+
+## Usage
+You need to go to the [firebase](https://firebase.google.com/) website and start a new project. When it is done you should paste your configurations to the firebase.js file
+
