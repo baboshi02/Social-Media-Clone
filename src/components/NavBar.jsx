@@ -13,7 +13,7 @@ export const NavBar = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
   const navigate = useNavigate();
   const { users } = useContext(PostContext);
-  const currentLocation = location.pathname;
+  const currentLocation = location.hash;
   return (
     <div className=" gap-2  dark:bg-[#282C35] bg-[#4b8d8f] flex justify-end px-1 ">
       <div className=" mr-auto">
@@ -26,10 +26,12 @@ export const NavBar = () => {
           Signed in as {users.username}
         </div>
       )}
+      {/*
+        To DO APPLY DARK MODE /LIGHT MODE
       <NavBarButton onClick={toggleDarkMode} className="bg-transparent">
         {isDarkMode ? <FaSun /> : <FaMoon />}
-      </NavBarButton>
-      {currentLocation == "/" ? (
+      </NavBarButton> */}
+      {currentLocation == "" || currentLocation == "#/" ? (
         <NavBarButton onClick={() => navigate("/addPost")}>
           Add Post
         </NavBarButton>

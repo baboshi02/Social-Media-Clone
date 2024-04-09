@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { HomePage } from "./Pages/HomePage/HomePage";
 import { useAuth } from "./Hooks/useAuth";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,

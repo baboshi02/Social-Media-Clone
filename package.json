@@ -2,11 +2,11 @@
   "name": "reddit-clone",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://baboshi02.github.io/",
+  "homepage": "https://baboshi02.github.io/Social-Media-Clone",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "host": "vite --host",
     "build": "vite build",
