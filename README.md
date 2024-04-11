@@ -9,13 +9,16 @@ Showcasing a basic social media app that allows users basic functionality like r
 
 ## Installation
 
+```bash
 git clone https://github.com/baboshi02/Social-Media-Clone.git
 
-cd Ecommerce-Website
+cd Social-Media-Clone
 
 npm install
 
 npm run dev
+```
+ 
 
 ## Usage
 You need to go to the [firebase](https://firebase.google.com/) website and start a new project. When it is done you should paste your configurations to the firebase.js file
